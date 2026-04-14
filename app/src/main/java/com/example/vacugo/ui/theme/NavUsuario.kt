@@ -58,7 +58,7 @@ fun MainScreen() {
         }
     ) { innerPadding ->
         if (mostrarCentros) {
-            CentroScreen(
+            CentrosScreen (
                 modifier = Modifier.fillMaxSize(),
                 onBack = { mostrarCentros = false }
             )
