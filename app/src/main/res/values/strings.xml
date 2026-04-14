@@ -3,6 +3,100 @@
     <!-- ── LoadingScreen ────────────────────────────────────────── -->
     <string name="loading_text">Loading...</string>
 
+    <!-- Login Screen -->
+    <string name="login_title">Iniciar sesión</string>
+    <string name="login_welcome">Bienvenido. Por favor, ingresa tus credenciales.</string>
+    <string name="email_label">Correo electrónico o usuario</string>
+    <string name="email_placeholder">ejemplo@correo.com</string>
+    <string name="password_label">Contraseña</string>
+    <string name="password_error">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="login_button">Iniciar sesión</string>
+    <string name="role_patient">Usuario/Paciente</string>
+    <string name="role_doctor">Doctor</string>
+    <string name="role_admin">Administrador</string>
+    <string name="create_account">Crear cuenta nueva</string>
+    <string name="support_center">Ayuda / Soporte</string>
+    <string name="language_es">Español (ES)</string>
+    <string name="mode_light">Modo Claro</string>
+    <string name="mode_dark">Modo Oscuro</string>
+
+    <!-- Register Screen -->
+    <string name="register_title">Registro de Usuario</string>
+    <string name="profile_photo">Foto de perfil</string>
+    <string name="personal_info_section">INFORMACIÓN PERSONAL</string>
+    <string name="full_name_label">Nombre completo</string>
+    <string name="full_name_placeholder">Ej. Juan García Díaz</string>
+    <string name="birth_date_label">Fecha de nacimiento</string>
+    <string name="birth_date_placeholder">DD/MM/AAAA</string>
+    <string name="gender_label">Género</string>
+    <string name="gender_select">Seleccionar</string>
+    <string name="gender_female">Femenino</string>
+    <string name="gender_male">Masculino</string>
+    <string name="curp_label">CURP o número de identidad</string>
+    <string name="curp_placeholder">Ingrese su identificador</string>
+    <string name="curp_helper">Este dato es necesario para validar tu identidad oficial.</string>
+    <string name="profile_type_section">TIPO DE PERFIL</string>
+    <string name="profile_type_placeholder">Perfiles</string>
+    <string name="back_content_desc">Regresar</string>
+    <string name="change_photo_content_desc">Cambiar foto</string>
+
+    <!-- Recovery Screen -->
+    <string name="recovery_title">Recuperar contraseña</string>
+    <string name="recovery_desc">Ingresa tu correo electrónico registrado para recibir un código de verificación.</string>
+    <string name="email_required_error">El correo electrónico es obligatorio</string>
+    <string name="send_code_instruction">Te enviaremos un código de 6 dígitos</string>
+    <string name="send_code_button">Enviar código</string>
+    <string name="back_to_login">Volver al inicio de sesión</string>
+    <string name="recovery_help_footer">Si tienes problemas para recuperar tu cuenta, contacta con nuestro equipo de soporte técnico.</string>
+
+    <!-- Verify Code Screen -->
+    <string name="verify_code_title_appbar">Ingresa el código</string>
+    <string name="verify_email_title">Verifica tu correo</string>
+    <string name="verify_email_desc">Hemos enviado un código de 6 dígitos a </string>
+    <string name="resend_prefix">Reenviar en 00:</string>
+    <string name="resend_code_button">Reenviar código</string>
+    <string name="change_email_link">← Cambiar correo electrónico</string>
+    <string name="verify_code_button">Verificar código</string>
+    <string name="no_code_received_footer">¿No recibiste nada? Revisa tu carpeta de spam o correo no deseado.</string>
+
+    <!-- New Password Screen -->
+    <string name="new_password_title">Crear nueva contraseña</string>
+    <string name="security_setup_title">Establece tu seguridad</string>
+    <string name="security_setup_desc">Tu nueva contraseña debe ser diferente a las utilizadas anteriormente para garantizar la seguridad de tu cuenta.</string>
+    <string name="new_password_label">Nueva contraseña</string>
+    <string name="confirm_password_label">Confirmar contraseña</string>
+    <string name="req_min_chars">Mínimo 8 caracteres</string>
+    <string name="req_uppercase">Al menos una mayúscula</string>
+    <string name="req_number">Al menos un número</string>
+    <string name="reset_password_button">Restablecer contraseña</string>
+    <string name="back_to_login_short">Volver inicio de secion</string>
+    <string name="security_footer_note">Tu seguridad es nuestra prioridad. Esta conexión está cifrada de punto a punto.</string>
+
+    <!-- Support Screen -->
+    <string name="support_title">Centro de Ayuda</string>
+    <string name="support_subtitle">Soporte Técnico</string>
+    <string name="faq_title">Preguntas Frecuentes</string>
+    <string name="not_found_support">¿No encontraste lo que buscabas?</string>
+    <string name="contact_us_directly">Contáctanos directamente</string>
+    <string name="send_support_email">Enviar correo a soporte</string>
+
+    <string name="faq_turnos_cat">TURNOS</string>
+    <string name="faq_turnos_q">¿Cómo agendar mi turno virtual?</string>
+    <string name="faq_turnos_a">Para agendar un turno virtual, ingresa a la sección \"Mis Trámites\" desde el menú principal, selecciona \"Agendar Nuevo\" y elige la modalidad \"Virtual\".</string>
+
+    <string name="faq_expedientes_cat">EXPEDIENTES</string>
+    <string name="faq_expedientes_q">¿Cómo consultar mi expediente digital?</string>
+    <string name="faq_expedientes_a">Puedes consultar tu expediente ingresando con tus credenciales y seleccionando la opción \'Mi Historial\' en el menú de perfil.</string>
+
+    <string name="faq_seguridad_cat">SEGURIDAD</string>
+    <string name="faq_seguridad_q">¿Qué hago si olvidé mi contraseña?</string>
+    <string name="faq_seguridad_a">Si olvidaste tu contraseña, usa la opción \'¿Olvidaste tu contraseña?\' en el login para iniciar el proceso de recuperación por correo.</string>
+
+    <string name="faq_salud_cat">SALUD</string>
+    <string name="faq_salud_q">¿Cómo saber si hay disponibilidad de vacunas?</string>
+    <string name="faq_salud_a">La disponibilidad se actualiza diariamente. Puedes verificarla en el mapa de centros o llamando a la línea de salud local.</string>
+
     <!-- ── Dashboard Administrador ────────────────────────────────────────── -->
     <string name="dashboard_admin">Dashboard Administrador</string>
     <string name="metricas_principales">Métricas Principales</string>
