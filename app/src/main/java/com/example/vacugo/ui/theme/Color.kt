@@ -43,3 +43,17 @@ val TagOrangeBg   = Color(0xFFFEF3C7)
 val TagOrangeText = Color(0xFF92400E)
 val TagRedBg      = Color(0xFFFEE2E2)
 val TagRedText    = Color(0xFF991B1B)
+
+val Fondo = Color(0xFFF3F4F6)
+val AzulCielo = Color(0xFF38BDF8)
+val AzulMorado = Color(0xFF6366F1)
+val AzulFuerte = Color(0xFF1D4ED8)
+
+val AzulClaro = Color(0xFFDDEBFF)
+val VerdeClaro = Color(0xFFDFF7E8)
+val NaranjaClaro = Color(0xFFFFE8DC)
+val MoradoClaro = Color(0xFFF1E4FF)
+
+val azulito = Color(0xFF2563EB)
+
+val Negris = Color(0xFF6B7280)
