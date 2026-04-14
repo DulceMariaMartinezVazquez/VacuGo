@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VacuGo</string>
+    <!-- ── LoadingScreen ────────────────────────────────────────── -->
+    <string name="loading_text">Loading...</string>
+</resources>
