@@ -57,3 +57,62 @@ val MoradoClaro = Color(0xFFF1E4FF)
 val azulito = Color(0xFF2563EB)
 
 val Negris = Color(0xFF6B7280)
+
+//Paleta de colores doctor
+val BgLightBlue = Color(0xFFE9F0FF)
+val BgLightGreen = Color(0xFFE4F9F2)
+val TextGray = Color(0xFF717171)
+val BackgroundMain = Color(0xFFF8F9FB)
+
+val BrandBlue = Color(0xFF1D5DFF)
+val BackgroundLight = Color.White
+val CardBackground = Color.White
+
+val KpiBlueBg = Color(0xFFE3EFFF)
+val KpiGreenBg = Color(0xFFE4F9F2)
+val KpiBlueText = Color(0xFF194CB0)
+val KpiGreenText = Color(0xFF0C8462)
+
+val StatusInServicioBg = Color(0xFFF0F2F5)
+val StatusInServicioText = Color(0xFF5A6678)
+val StatusOnlineGreen = Color(0xFF34C759)
+
+val TextTertiary = Color(0xFF9EA6B0)
+
+val AlertRedBg = Color(0xFFFFF1F0)
+val AlertRedText = Color(0xFFD93025)
+val OkGreenBg = Color(0xFFE6F4EA)
+val OkGreenText = Color(0xFF1E8E3E)
+
+val BadgeBlueBg = Color(0xFFEBF2FF)
+val BadgeBlueText = Color(0xFF1D5DFF)
+
+val BorderDashed = Color(0xFFD0D5DD)
+val WarningRedBg = Color(0xFFFEE2E2)
+val WarningRedText = Color(0xFFDC2626)
+val InfoBlueBg = Color(0xFFE0F2FE)
+val ActionBlue = Color(0xFF3B82F6)
+
+val BgGray = Color(0xFFF8F9FB)
+val SkyBlueOutline = Color(0xFFBADEFB)
+val StatusBadgeBg = Color(0xFFF0F2F5)
+val OnlineGreen = Color(0xFF34C759)
+
+val StatsBlue = Color(0xFF00C2FF)
+val StatsPurple = Color(0xFF9D4EDD)
+val StatsGreen = Color(0xFF57E3B3)
+val StatsOrange = Color(0xFFF07167)
+val BgLight = Color(0xFFF8FAFC)
+val GrayBorder = Color(0xFFE2E8F0)
+
+val BrandBlueLight = Color(0xFFE0E7FF)
+val TextDark = Color(0xFF1F2937)
+val GrayLine = Color(0xFFE5E7EB)
+
+val BgPurplePastel = Color(0xFFF3F4FF)
+val BgCyanPastel = Color(0xFFE0F7FA)
+val BgRedPastel = Color(0xFFFEE2E2)
+val BgGrayPastel = Color(0xFFF3F4F6)
+val TextStatusCyan = Color(0xFF00838F)
+val PriorityRedText = Color(0xFFDC2626)
+val SuccessGreen = Color(0xFF10B981)
