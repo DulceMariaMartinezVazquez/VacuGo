@@ -201,7 +201,7 @@ fun LoginScreen(
                     fontSize = 14.sp,
                     modifier = Modifier
                         .padding(4.dp)
-                        .clickable { onNavigateToUser() } // <--- Acción para Usuario
+                        .clickable { onNavigateToUser() }
                 )
 
                 // Vínculo para Doctor -> Va a PersonalScreen
@@ -211,9 +211,8 @@ fun LoginScreen(
                     fontSize = 14.sp,
                     modifier = Modifier
                         .padding(4.dp)
-                        .clickable { onNavigateToPersonal() } // <--- Acción para Personal/Doctor
+                        .clickable { onNavigateToPersonal() } //
                 )
-
                 // Vínculo para Administrador -> Va a HomeAdminScreen
                 Text(
                     text = stringResource(id = R.string.role_admin),
@@ -221,7 +220,7 @@ fun LoginScreen(
                     fontSize = 14.sp,
                     modifier = Modifier
                         .padding(4.dp)
-                        .clickable { onNavigateToAdmin() } // <--- Acción para Admin
+                        .clickable { onNavigateToAdmin() }
                 )
             }
 

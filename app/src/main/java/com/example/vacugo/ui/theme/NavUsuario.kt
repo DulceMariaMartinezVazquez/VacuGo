@@ -8,11 +8,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavHostController
 import com.example.vacugo.R
 import com.example.vacugo.screens3.*
 
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavHostController) {
     val navItemList = listOf(
         NavItem(stringResource(R.string.home_screen),       Icons.Default.Home),
         NavItem(stringResource(R.string.historial_screen),  Icons.Default.List),
@@ -64,10 +65,13 @@ fun MainScreen() {
             )
         } else {
             ContentScreen(
-                modifier = if (mostrarBarra)
-                    Modifier.padding(innerPadding)
-                else
-                    Modifier.fillMaxSize(),
+                navController = navController,
+                modifier =
+                    if (mostrarBarra)
+                        Modifier.padding(innerPadding)
+                    else
+                        Modifier.fillMaxSize(),
+
                 selectedIndex = selectedIndex,
                 onNavigateBack = { selectedIndex = 0 },
                 onVerCentros = { mostrarCentros = true }
@@ -78,13 +82,16 @@ fun MainScreen() {
 
 @Composable
 fun ContentScreen(
+    navController: NavHostController,
     modifier: Modifier = Modifier,
     selectedIndex: Int,
     onNavigateBack: () -> Unit = {},
     onVerCentros: () -> Unit = {}
 ) {
+
     when (selectedIndex) {
-        0 -> HomeScreen(modifier)
+
+        0 -> HomeUsuarioScreen(modifier, navController)
         1 -> HistorialScreen(modifier, onNavigateBack = onNavigateBack)
         2 -> CalendarioScreen(modifier, onNavigateBack = onNavigateBack)
         3 -> FilaVirtualScreen(modifier, onVerOtrosCentros = onVerCentros)

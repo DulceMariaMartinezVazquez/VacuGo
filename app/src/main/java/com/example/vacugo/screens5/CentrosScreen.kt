@@ -54,7 +54,10 @@ fun CentrosScreen(navController: NavController, username: String?) {
     )
 
     Scaffold(
-        bottomBar = { BottomMenu(currentRoute = "centros", navController = navController, username = username) }
+        bottomBar = { BottomMenu(
+            navController = navController,
+            username = username
+        ) }
     ) { padding ->
         LazyColumn(
             modifier = Modifier

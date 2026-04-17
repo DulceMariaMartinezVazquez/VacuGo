@@ -17,7 +17,7 @@ import androidx.navigation.compose.*
 import com.example.vacugo.screens4.*
 
 @Composable
-fun MainScreen() {
+fun NavDoctor() {
     val navController = rememberNavController()
 
     val items = listOf(
@@ -83,9 +83,9 @@ fun MainScreen() {
             startDestination = Screen.Home.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(Screen.Home.route) { HomeScreen() }
+            composable(Screen.Home.route) { HomeDoctorScreen() }
             composable(Screen.FilaVirtual.route) { ProfesionalScreen() }
-            composable(Screen.Vacunacion.route) { RegistroScreen() }
+            composable(Screen.Vacunacion.route) { RegistroDoctorScreen () }
             composable(Screen.Estadisticas.route) { EstadisticasScreen() }
         }
     }

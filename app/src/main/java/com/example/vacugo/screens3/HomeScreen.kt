@@ -31,7 +31,10 @@ import com.example.vacugo.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeUsuarioScreen(
+    modifier: Modifier = Modifier,
+    navController: androidx.navigation.NavHostController) {
+
     val paciente       = DatosEjemplo.paciente
     val proximaCita    = DatosEjemplo.proximasCitas.firstOrNull()
     val notificaciones = DatosEjemplo.notificaciones
@@ -144,14 +147,24 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                             },
                             onClick = {
                                 menuExpandido = false
+
                                 val numero  = context.getString(R.string.home_whatsapp_numero)
                                 val mensaje = context.getString(R.string.home_whatsapp_mensaje)
-                                val intent  = Intent(Intent.ACTION_VIEW).apply {
-                                    data = Uri.parse(
-                                        "https://wa.me/$numero?text=${Uri.encode(mensaje)}"
-                                    )
+
+                                val uri = Uri.parse(
+                                    "https://api.whatsapp.com/send?phone=$numero&text=${Uri.encode(mensaje)}"
+                                )
+
+                                val intent = Intent(Intent.ACTION_VIEW, uri)
+
+                                intent.setPackage("com.whatsapp")
+
+                                try {
+                                    context.startActivity(intent)
+                                } catch (e: Exception) {
+                                    val fallbackIntent = Intent(Intent.ACTION_VIEW, uri)
+                                    context.startActivity(fallbackIntent)
                                 }
-                                context.startActivity(intent)
                             }
                         )
 
@@ -169,6 +182,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                                         tint = TextHint,
                                         modifier = Modifier.size(18.dp)
                                     )
+
                                     Text(
                                         stringResource(R.string.home_menu_cerrar_sesion),
                                         fontSize = 14.sp,
@@ -176,8 +190,20 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                                     )
                                 }
                             },
-                            onClick = { },
-                            enabled = false
+
+                            onClick = {
+
+                                navController.navigate("login") {
+
+                                    popUpTo("login") {
+                                        inclusive = true
+                                    }
+
+                                    launchSingleTop = true
+                                }
+
+                            }
+
                         )
                     }
                 }

@@ -24,7 +24,7 @@ import com.example.vacugo.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RegistroScreen(onBack: () -> Unit = {}) {
+fun RegistroDoctorScreen(onBack: () -> Unit = {}) {
     Scaffold(
         topBar = {
             Surface(

@@ -26,7 +26,7 @@ import com.example.vacugo.ui.theme.*
 
 
 @Composable
-fun HomeScreen() {
+fun HomeDoctorScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()

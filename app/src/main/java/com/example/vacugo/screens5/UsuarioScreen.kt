@@ -22,7 +22,7 @@ import com.example.vacugo.R
 import com.example.vacugo.ui.theme.*
 
 @Composable
-fun UsuariosScreen(
+fun UsuarioScreen(
     navController: NavController,
     username: String?
 ) {
@@ -56,7 +56,6 @@ fun UsuariosScreen(
         topBar = { UsuariosHeader() },
         bottomBar = {
             BottomMenu(
-                currentRoute = "usuarios",
                 navController = navController,
                 username = username
             )

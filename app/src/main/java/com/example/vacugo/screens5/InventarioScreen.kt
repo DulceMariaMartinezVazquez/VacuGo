@@ -60,7 +60,10 @@ fun InventarioScreen(navController: NavController, username: String?) {
 
     Scaffold(
         topBar = { InventarioHeader() },
-        bottomBar = { BottomMenu(currentRoute = "inventario", navController = navController, username = username) }
+        bottomBar = { BottomMenu(
+            navController = navController,
+            username = username
+        ) }
     ) { padding ->
         LazyColumn(
             modifier = Modifier

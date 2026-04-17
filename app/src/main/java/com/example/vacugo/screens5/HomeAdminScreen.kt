@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.vacugo.R
 import com.example.vacugo.ui.theme.*
 
@@ -34,7 +35,6 @@ fun HomeAdminScreen(
         topBar = { Header() },
         bottomBar = {
             BottomMenu(
-                currentRoute = "home",
                 navController = navController,
                 username = username
             )
@@ -69,7 +69,6 @@ fun HomeAdminScreen(
                         Icons.Outlined.Group,
                         Modifier.weight(1f)
                     )
-
                     MiniCard(
                         stringResource(id = R.string.hoy),
                         "1,420",
@@ -93,7 +92,6 @@ fun HomeAdminScreen(
                         Icons.Outlined.DateRange,
                         Modifier.weight(1f)
                     )
-
                     MiniCard(
                         stringResource(id = R.string.personal),
                         "842",
@@ -145,6 +143,8 @@ fun HomeAdminScreen(
     }
 }
 
+// ── Header ────────────────────────────────────────────────────────────────────
+
 @Composable
 fun Header() {
     Surface(color = Color.White, shadowElevation = 4.dp) {
@@ -160,7 +160,12 @@ fun Header() {
                     .background(AzulCielo, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(Icons.Outlined.Shield, null, tint = Color.White, modifier = Modifier.size(20.dp))
+                Icon(
+                    Icons.Outlined.Shield,
+                    null,
+                    tint = Color.White,
+                    modifier = Modifier.size(20.dp)
+                )
             }
 
             Spacer(modifier = Modifier.width(12.dp))
@@ -181,6 +186,57 @@ fun Header() {
         }
     }
 }
+
+// ── BottomMenu ────────────────────────────────────────────────────────────────
+
+@Composable
+fun BottomMenu(
+    navController: NavController,
+    username: String?
+) {
+    val user = username ?: "Admin"
+
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
+    // ✅ FIX 1: "Usuarios" apunta a "usuario/$user" (sin 's') = ruta correcta del admin
+    // ✅ FIX 2: selected compara con el prefijo del destino, no con el label
+    val items = listOf(
+        Triple("Home",       "home",             Icons.Outlined.Home),
+        Triple("Personal",   "personal/$user",   Icons.Outlined.Badge),
+        Triple("Usuarios",   "usuario/$user",    Icons.Outlined.PersonOutline), // ← corregido
+        Triple("Inventario", "inventario/$user", Icons.Outlined.Inventory),
+        Triple("Ajustes",    "centros/$user",    Icons.Outlined.Settings)
+    )
+
+    NavigationBar(containerColor = Color.White) {
+        items.forEach { (label, destino, icon) ->
+
+            // Extrae solo el prefijo de la ruta: "usuario", "personal", "home", etc.
+            val prefijo = destino.substringBefore("/")
+
+            NavigationBarItem(
+                selected = currentRoute?.startsWith(prefijo) == true, // ✅ FIX 2
+                onClick = {
+                    if (currentRoute?.startsWith(prefijo) == true)
+                        return@NavigationBarItem
+
+                    navController.navigate(destino) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
+                icon = { Icon(icon, contentDescription = null) },
+                label = { Text(label, fontSize = 10.sp) }
+            )
+        }
+    } // ✅ FIX 3: llave de cierre que faltaba en tu código
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
 
 @Composable
 fun SectionTitle(
@@ -253,67 +309,6 @@ fun GraficaCard() {
 }
 
 @Composable
-fun BottomMenu(
-    currentRoute: String,
-    navController: NavController,
-    username: String?
-) {
-
-    val user = username ?: "Admin"
-
-    val items = listOf(
-        Triple("home", stringResource(id = R.string.menu_inicio), Icons.Outlined.Home),
-        Triple("personal", stringResource(id = R.string.menu_personal), Icons.Outlined.Badge),
-        Triple("usuarios", stringResource(id = R.string.menu_usuarios), Icons.Outlined.PersonOutline),
-        Triple("inventario", stringResource(id = R.string.menu_inventario), Icons.Outlined.Inventory),
-        Triple("ajustes", stringResource(id = R.string.menu_ajustes), Icons.Outlined.Settings)
-    )
-
-    Surface(
-        color = Color.White,
-        shadowElevation = 8.dp
-    ) {
-
-        NavigationBar(
-            containerColor = Color.White
-        ) {
-
-            items.forEach { (route, label, icon) ->
-
-                NavigationBarItem(
-                    selected = currentRoute == route,
-                    onClick = {
-
-                        val destino = when (route) {
-                            "home" -> "home"
-                            "usuarios" -> "usuarios/$user"
-                            "personal" -> "personal/$user"
-                            "inventario" -> "inventario/$user"
-                            "ajustes" -> "centros/$user"
-                            else -> "home"
-                        }
-
-                        navController.navigate(destino) {
-                            popUpTo("home")
-                            launchSingleTop = true
-                        }
-                    },
-                    icon = { Icon(icon, null) },
-                    label = { Text(label, fontSize = 10.sp) },
-                    colors = NavigationBarItemDefaults.colors(
-                        selectedIconColor = AzulCielo,
-                        selectedTextColor = AzulCielo,
-                        unselectedIconColor = Color.Gray,
-                        unselectedTextColor = Color.Gray,
-                        indicatorColor = Color.Transparent
-                    )
-                )
-            }
-        }
-    }
-}
-
-@Composable
 fun CentrosOperativosCard() {
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -360,7 +355,6 @@ fun CentrosOperativosCard() {
 
 @Composable
 fun AlertasSistemaCard() {
-
     var mostrarCaducar by remember { mutableStateOf(false) }
     var mostrarErrores by remember { mutableStateOf(false) }
 
@@ -378,9 +372,7 @@ fun AlertasSistemaCard() {
                     tint = Color.Red,
                     modifier = Modifier.size(24.dp)
                 )
-
                 Spacer(modifier = Modifier.width(8.dp))
-
                 Text(
                     stringResource(id = R.string.inventario_critico),
                     fontWeight = FontWeight.Bold
@@ -400,9 +392,7 @@ fun AlertasSistemaCard() {
                     stringResource(id = R.string.hospital_general),
                     fontWeight = FontWeight.Medium
                 )
-
                 Spacer(modifier = Modifier.weight(1f))
-
                 Box(
                     modifier = Modifier
                         .background(Color.Red, RoundedCornerShape(10.dp))
@@ -488,10 +478,7 @@ fun ExpandableRow(
         Text(title, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.weight(1f))
         Icon(
-            imageVector = if (expanded)
-                Icons.Outlined.ExpandMore
-            else
-                Icons.Outlined.ChevronRight,
+            imageVector = if (expanded) Icons.Outlined.ExpandMore else Icons.Outlined.ChevronRight,
             contentDescription = null
         )
     }

@@ -44,7 +44,10 @@ fun AltaStockScreen(navController: NavController, username: String?) {
 
     Scaffold(
         bottomBar = {
-            BottomMenu(currentRoute = "alta_stock", navController = navController, username = username)
+            BottomMenu(
+                navController = navController,
+                username = username
+            )
         }
     ) { padding ->
         LazyColumn(

@@ -4,64 +4,99 @@ import androidx.compose.runtime.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.vacugo.screen.ConfigScreen
-import com.example.vacugo.screen.WelcomeScreen
 import kotlinx.coroutines.delay
-import com.example.vacugo.screens1.LoadingScreen
-import com.example.vacugo.screens1.SplashScreen
 
+// Splash y Loading
+import com.example.vacugo.screens1.SplashScreen
+import com.example.vacugo.screens1.LoadingScreen
+
+// Welcome y Config
+import com.example.vacugo.screen.WelcomeScreen
+import com.example.vacugo.screen.ConfigScreen
+import com.example.vacugo.navigation.AppNavigation
 
 @Composable
-fun AppEntry() {
-    var screenState by remember { mutableStateOf(0) }
+fun AppEntry(
+    isDarkTheme: Boolean,
+    onToggleTheme: () -> Unit
+) {
 
+    var screenState by remember {
+        mutableStateOf(0)
+    }
+
+    // Splash → Loading
     LaunchedEffect(Unit) {
-        delay(2000) // Splash
+
+        delay(2000)
         screenState = 1
-        delay(2000) // Loading
+
+        delay(2000)
         screenState = 2
     }
 
     when (screenState) {
+
+        // Splash
         0 -> SplashScreen()
+
+        // Loading
         1 -> LoadingScreen()
-        2 -> NavWelcome()
+
+        // Navegación principal
+        2 -> {
+
+            val navController = rememberNavController()
+
+            NavHost(
+                navController = navController,
+                startDestination = "welcome"
+            ) {
+
+
+                composable("welcome") {
+
+                    WelcomeScreen(
+
+                        onNextClick = {
+                            navController.navigate("config")
+                        },
+
+                        onLoginClick = {
+                            navController.navigate("login_flow")
+                        }
+
+                    )
+
+                }
+
+
+                composable("config") {
+
+                    ConfigScreen(
+
+                        onStartClick = {
+                            navController.navigate("login_flow")
+                        }
+
+                    )
+
+                }
+
+
+                composable("login_flow") {
+
+                    AppNavigation(
+                        isDarkTheme = isDarkTheme,
+                        onToggleTheme = onToggleTheme
+                    )
+
+                }
+
+            }
+
+        }
+
     }
+
 }
-
-@Composable
-fun NavWelcome() {
-    val navController = rememberNavController()
-
-    NavHost(navController = navController, startDestination = "welcome") {
-
-        composable("welcome") {
-            WelcomeScreen(
-                onNextClick  = { navController.navigate("config") },
-                onLoginClick = { navController.navigate("login") }
-            )
-        }
-
-        composable("login") {
-            LoginScreen(
-                onLoginSuccess = { navController.navigate("config") }
-            )
-        }
-
-        composable("config") {
-            ConfigScreen(
-                onStartClick = { /* navegar a home */ }
-            )
-        }
-
-        // Agrega más pantallas aquí...
-    }
-}
-
-@Composable
-fun LoginScreen(onLoginSuccess: () -> Unit) {
-    TODO("Not yet implemented")
-}
-
-
-

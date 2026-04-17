@@ -92,8 +92,8 @@ fun WelcomeScreen(onNextClick: () -> Unit, onLoginClick: () -> Unit) {
                         .fillMaxSize()
                         .clip(CircleShape)
                         .graphicsLayer(
-                            scaleX = 1.5f,
-                            scaleY = 1.7f
+                            scaleX = 1f,
+                            scaleY = 1f
                         )
                 )
             }

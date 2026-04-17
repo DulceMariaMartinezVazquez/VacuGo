@@ -45,7 +45,10 @@ fun PersonalScreen(
 
     Scaffold(
         topBar = { PersonalHeader() },
-        bottomBar = { BottomMenu("personal", navController, username) },
+        bottomBar = { BottomMenu(
+            navController = navController,
+            username = username
+        ) },
         containerColor = Color.White
     ) { padding ->
 
